@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <script type="text/javascript" src="http://livejs.com/live.js"></script>
-  <title>HTML5 Canvas</title>
+
+  <title>HTML5 Canvas Paint</title>
 </head>
 <body>
 <canvas id="draw" width="800" height="800"></canvas>
@@ -20,6 +20,10 @@ const canvas = document.querySelector('#draw');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+const centY = canvas.height*.25;
+const centX = canvas.width*.37;
+
+
 ctx.strokeStyle='#BADASS';
 ctx.lineJoin = 'round';
 ctx.lineCap = 'round';
@@ -28,7 +32,8 @@ ctx.linewidth = 100;
 
 // ctx.globalCompositeOperation='subtract';
 //there are a variety of different blend modes check mdn for more. They make the colors look different
-
+  ctx.font = '32px serif';
+  ctx.fillText('Use The Mouse to Draw', centX, centY);
 
 let isDrawing = false;
 let lastX = 0;
@@ -38,7 +43,7 @@ let direction = true;
 
 function draw(e){
   if(!isDrawing) return //stops function from running when not clickingmousedown
-  console.log(e);
+  // console.log(e);
 // linewidth = hue;
 //This would make it so that the line width gets very big to 300 then goes back down with the hue variable
 ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
@@ -97,7 +102,8 @@ canvas.addEventListener('mouseout', () => isDrawing = false);
   html, body {
     margin:0;
   }
-  *{overflow:hidden;}
+  *{overflow:hidden;
+  background:#a89070;}
 </style>
 
 </body>
